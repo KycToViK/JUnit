@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BankAccountTest {
 
@@ -26,5 +25,17 @@ public class BankAccountTest {
         String[] a = account.getFullName();
         String[] b = {"a","b"};
         Assertions.assertArrayEquals(b,a);
+    }
+
+    @Test
+    public void shouldReturnNullAmountWhenNotActive() {
+        BankAccount account = new BankAccount("a","b");
+        Assertions.assertNull(null,account.getCurrency());
+    }
+    @Test
+    public void shouldBeBlockedAfterBlockIsCalled() {
+        BankAccount account = new BankAccount("a","b");
+        account.block();
+        assertTrue(account.isBlocked());
     }
 }
